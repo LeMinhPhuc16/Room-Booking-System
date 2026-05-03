@@ -1,9 +1,10 @@
-from database.db import Base, engine
-from models.user import User
-from models.booking import Booking
+from app import app
+from database.init_db import init_db
+from routes import test
 
-def init_db():
-    Base.metadata.create_all(engine)
+def main():
+    init_db()
 
-
-init_db()
+if __name__ == "__main__":
+    main()
+    app.run(debug=True)

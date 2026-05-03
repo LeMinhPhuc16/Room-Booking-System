@@ -1,6 +1,6 @@
 from database.db import Base
 from sqlalchemy.orm import Mapped, mapped_column
-from sqlalchemy import String, Enum, ForeignKey
+from sqlalchemy import ForeignKey, CheckConstraint
 
 class OrderItem(Base):
     __tablename__ = "order_items"
@@ -9,11 +9,10 @@ class OrderItem(Base):
     booking_id: Mapped[int] = mapped_column(ForeignKey("bookings.booking_id"), nullable=False)
     price: Mapped[int] = mapped_column(nullable=False)
 
+    __table_args__ = (
+        CheckConstraint("price > 0", name="check_price_ order_item_positive"),
+    )
+    
 
 
-# Table orderItem{
-#   idItem int [primary key]
-#   idOrder int [ref: > orders.idOrder]
-#   idBooking int [ref: > bookings.idBooking] 
-#   price int [not null]   //giá lúc đặt (có thể ảnh hưởng voucher, ...)
-# }
+

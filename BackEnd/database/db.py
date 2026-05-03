@@ -6,6 +6,7 @@ load_dotenv()
 URL = os.getenv("DATABASE_URL")
 
 engine = create_engine(URL, echo=True)
-localSession = sessionmaker(bind=engine, autoflush=False)
+localSession = sessionmaker(bind=engine, autoflush=False, autocommit=False)
+
 class Base(DeclarativeBase):
     pass

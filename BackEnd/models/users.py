@@ -6,6 +6,6 @@ class User(Base):
     __tablename__ = "users"
     user_id: Mapped[int] = mapped_column(primary_key=True)
     publicId: Mapped[str] = mapped_column(String(10), unique=True)
-    name: Mapped[str]  = mapped_column(nullable=False)
-    email: Mapped[str] = mapped_column(unique=True, nullable=False)
-    numberPhone: Mapped[str] = mapped_column( String(10), unique=True, nullable=False)
+    name: Mapped[str]  = mapped_column(String(100), nullable=False)
+    email: Mapped[str] = mapped_column(String(100), unique=True, nullable=False)
+    numberPhone: Mapped[str] = mapped_column( String(20), unique=True, nullable=False)
