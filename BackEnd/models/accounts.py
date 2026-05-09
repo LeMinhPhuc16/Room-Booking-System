@@ -9,6 +9,6 @@ class Account(Base):
     id_user: Mapped[int] = mapped_column(ForeignKey("users.user_id"), nullable=False)
     user_name: Mapped[str] =  mapped_column(String(15), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime,nullable=False, default=datetime.utcnow) 
+    created_at: Mapped[datetime] = mapped_column(DateTime,nullable=False, default=datetime.now) 
 
     

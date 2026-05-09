@@ -11,7 +11,7 @@ class Payment(Base):
     status: Mapped[str] = mapped_column(Enum("Da thanh toan", "Chua thanh toan", "Thanh toan that bai"), nullable=False, default="Chua thanh toan")
     method: Mapped[str] = mapped_column(String(255), nullable=False)
     transaction_id : Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.utcnow, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False, default=datetime.now, index=True)
 
     __table_args__ = (
         CheckConstraint('amount > 0', name='check_amount_positive'),
